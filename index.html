@@ -5,77 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlockinCrazyFarm</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Removed the link to the image file -->
     <style>
-        /* Resetting styles to their default */
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #5C1818;
-            color: #fff;
-            transition: background-color 0.5s; /* Add transition effect to background color */
-        }
-
-        .title {
-            text-align: center;
-            font-size: 2rem;
-            margin-top: 50px;
-            color: #fff;
-            position: relative;
-            font-weight: bold;
-            font-family: cursive;
-            transition: color 0.5s; /* Add transition effect to color */
-        }
-
-        .title::after {
-            content: "";
-            display: block;
-            width: 100%;
-            height: 2px;
-            background-color: #fff;
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            transition: width 0.5s; /* Add transition effect to width */
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            border-radius: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            margin-top: 50px;
-        }
-
-        .newsletter-form {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .newsletter-form input[type="email"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-
-        .newsletter-form button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #8B0000;
-            color: #fff;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .newsletter-form button:hover {
-            background-color: #A0522D;
-        }
+        /* Your existing CSS styles */
 
         /* Footer style */
         footer {
@@ -98,14 +31,12 @@
 
     <div class="title">Flockin Crazy Farm</div>
 
-    <div class="container">
-        <h2>Sign up for our newsletter</h2>
-        <p>Get the latest news and updates from Flockin Crazy Farm delivered straight to your inbox.</p>
-        <form class="newsletter-form" action="#" method="post">
-            <input type="email" name="email" id="email" placeholder="Enter your email" required>
-            <button type="submit">Subscribe</button>
-        </form>
-    </div>
+    <nav>
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="about.html" class="nav-item">About</a>
+        <a href="products.html" class="nav-item">Products</a>
+        <a href="contact.html" class="nav-item">Contact</a>
+    </nav>
 
     <!-- Cookie prompt -->
     <div id="cookiePrompt" class="cookie-prompt">
@@ -116,8 +47,22 @@
         </div>
     </div>
 
+    <!-- Chatbot UI -->
+    <div class="chatbot-ui" onclick="toggleChatbot()">
+        <span>&#x1F425;</span>
+    </div>
+
+    <!-- Chatbot Popup -->
+    <div class="chatbot-popup" id="chatbotPopup">
+        <div class="chat-container" id="chatContainer"></div>
+        <input type="text" id="userInput" class="chat-input" placeholder="Type your message here..." onkeypress="handleKeyPress(event)">
+        <button class="send-button" onclick="handleUserInput()">Send</button>
+    </div>
+
     <!-- Footer -->
     <footer>&copy; 2024 All rights reserved</footer>
+
+    <script src="script.js"></script>
 
     <script>
         // Function to handle accepting cookies
@@ -133,6 +78,101 @@
             cookiePrompt.classList.add("fade-out");
             // Additional functionality to handle cookie decline can go here
         }
+
+        // Function to toggle the chatbot UI
+        function toggleChatbot() {
+            var chatbotPopup = document.getElementById("chatbotPopup");
+            chatbotPopup.classList.toggle("show");
+
+            // Display welcome message if chatbot UI is opened for the first time
+            var chatContainer = document.getElementById("chatContainer");
+            if (!chatContainer.hasChildNodes()) {
+                var botDiv = document.createElement("div");
+                botDiv.className = "bot-message";
+                botDiv.textContent = "Welcome to Flockin Crazy AI!";
+                chatContainer.appendChild(botDiv);
+            }
+        }
+
+        // Function to handle user input in the chatbot
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                handleUserInput();
+            }
+        }
+
+        // Function to handle user input in the chatbot
+        function handleUserInput() {
+            var userInput = document.getElementById("userInput");
+            var userMessage = userInput.value.trim();
+            var chatContainer = document.getElementById("chatContainer");
+
+            if (userMessage !== "") {
+                // Display user message in chat
+                var userDiv = document.createElement("div");
+                userDiv.className = "user-message";
+                userDiv.textContent = userMessage;
+                chatContainer.appendChild(userDiv);
+
+                // Handle bot response
+                setTimeout(function() {
+                    var botDiv = document.createElement("div");
+                    botDiv.className = "bot-message";
+                    botDiv.innerHTML = getBotResponse(userMessage); // Changed to innerHTML to render strong tag properly
+                    chatContainer.appendChild(botDiv);
+
+                    // Scroll chat to bottom
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+
+                    // Clear user input
+                    userInput.value = "";
+                }, 1000); // Simulate bot response delay
+            }
+        }
+
+        // Function to get bot response based on user input
+        function getBotResponse(userMessage) {
+            // Check if the user's message includes greetings and respond with a greeting
+            if (userMessage.toLowerCase().includes("hey") || userMessage.toLowerCase().includes("hello") || userMessage.toLowerCase().includes("hi")) {
+                return "Hello, how may I assist you?";
+            }
+
+            // Check if the user's message includes "joke" and provide a random chicken joke
+            if (userMessage.toLowerCase().includes("joke")) {
+                var jokes = [
+                    "Why did the chicken join a band? Because it had the drumsticks.",
+                    "What do you call a group of chickens clucking in unison? A chicken symphony!",
+                    "Why did the chicken cross the playground? To get to the other slide.",
+                    "What do chickens study in school? Eggonomics!",
+                    "Why did the chicken sit on the egg? Because it couldn't take a stand!"
+                ];
+                var randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+                return randomJoke;
+            }
+
+            // Default response if the user's message does not match any specific condition
+            return "I'm sorry, I can't help you with that. Feel free to ask me anything else!";
+        }
+
+        // Check if the user is on a mobile device
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // Call the showCookiePrompt function when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            var cookiePrompt = document.getElementById("cookiePrompt");
+            cookiePrompt.classList.add("show");
+
+            // Check if the user is on a mobile device
+            if (isMobile()) {
+                console.log("User is on a mobile device");
+                // Additional mobile-specific logic can be added here
+            } else {
+                console.log("User is on a laptop/desktop");
+                // Additional laptop/desktop-specific logic can be added here
+            }
+        });
     </script>
 </body>
 </html>
