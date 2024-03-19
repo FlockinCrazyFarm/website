@@ -1,0 +1,130 @@
+/* Resetting styles to their default */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #5C1818;
+    color: #fff;
+    transition: background-color 0.5s; /* Add transition effect to background color */
+}
+
+.title {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 50px;
+    color: #fff;
+    position: relative;
+    font-weight: bold;
+    font-family: cursive;
+    transition: color 0.5s; /* Add transition effect to color */
+}
+
+.title::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    transition: width 0.5s; /* Add transition effect to width */
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin-top: 50px;
+}
+
+.newsletter-form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.newsletter-form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.newsletter-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #8B0000;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background-color: #A0522D;
+}
+
+/* Footer style */
+footer {
+    background-color: #5C1818;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1; /* Ensure footer is behind other content */
+}
+
+.cookie-prompt {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.cookie-prompt.show {
+    display: block;
+    opacity: 1;
+}
+
+.cookie-prompt.fade-out {
+    opacity: 0;
+}
+
+.cookie-prompt p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.cookie-buttons {
+    margin-top: 20px;
+}
+
+.cookie-buttons button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, opacity 0.5s ease;
+}
+
+.cookie-buttons button:hover {
+    background-color: #A0522D;
+}
