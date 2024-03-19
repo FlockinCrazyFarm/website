@@ -1,6 +1,6 @@
 /* Resetting styles to their default */
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #5C1818;
@@ -31,54 +31,22 @@ body {
     transition: width 0.5s; /* Add transition effect to width */
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    margin-top: 50px;
-}
-
-.newsletter-form {
+nav {
     text-align: center;
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
-.newsletter-form input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-.newsletter-form button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #8B0000;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.newsletter-form button:hover {
-    background-color: #A0522D;
-}
-
-/* Footer style */
-footer {
-    background-color: #5C1818;
-    color: #fff;
+.nav-item {
+    display: inline-block;
+    color: white;
     text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: 1; /* Ensure footer is behind other content */
+    padding: 14px 20px;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s; /* Add transition effect to color */
+    animation: fallInPlace 0.5s ease forwards; /* Add fall-in-place effect */
 }
 
 .cookie-prompt {
@@ -91,7 +59,7 @@ footer {
     color: #fff;
     padding: 20px;
     border-radius: 20px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     opacity: 0;
     transition: opacity 0.5s ease;
 }
@@ -127,4 +95,159 @@ footer {
 
 .cookie-buttons button:hover {
     background-color: #A0522D;
+}
+
+.chatbot-ui {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #8B0000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+    animation: fallInPlace 0.5s ease forwards; /* Add fall-in-place effect */
+}
+
+.chatbot-ui:hover {
+    background-color: #A0522D;
+}
+
+.chatbot-ui span {
+    font-size: 24px;
+    color: white;
+}
+
+.chatbot-popup {
+    display: none;
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    border: 1px solid #ccc;
+    z-index: 9;
+    background-color: white;
+    width: 275px;
+    height: 400px;
+    border-radius: 10px;
+    padding: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-size: 1rem;
+    color: #333;
+}
+
+.chatbot-popup.show {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    animation: slideInUp 0.5s ease; /* Slide in from bottom effect */
+}
+
+.chat-container {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.user-message {
+    background-color: #007bff;
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    text-align: right;
+}
+
+.bot-message {
+    background-color: #28a745;
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    position: relative;
+    padding-left: 30px;
+}
+
+.bot-message::before {
+    content: "🐔";
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.chat-input {
+    width: calc(100% - 10px);
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: #333;
+}
+
+.send-button {
+    width: 100%;
+    padding: 8px 0;
+    background-color: #8B0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.send-button:hover {
+    background-color: #A0522D;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 70vh;
+}
+
+.image-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.rounded-image {
+    border-radius: 20px;
+    max-width: 250px;
+    display: block;
+}
+
+/* Keyframes for animations */
+@keyframes fallInPlace {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
