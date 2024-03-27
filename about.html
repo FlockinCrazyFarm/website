@@ -3,10 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Products - FlockinCrazyFarm</title>
+    <title>About - FlockinCrazyFarm</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: black;
+            font-size: 24px;
+        }
+        .back-btn:hover {
+            background-color: #f0f0f0;
+        }
         .tab-content {
             position: absolute;
             top: calc(50% - 2in);
@@ -23,11 +42,16 @@
 </head>
 <body>
 
+    <a href="index.html" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path fill="black" d="M14 7l-5 5 5 5V7z"/>
+        </svg>
+    </a>
+
     <div class="title">Contact</div>
 
     <div class="tab-content">
-        <!-- Your products content goes here -->
-        <p>This is the products page content.</p>
+        <p>We started our farm back in 2022. At FlockinCrazyFarm, we raise various species of birds and maintain a thriving garden. Our commitment to sustainable practices ensures high-quality products for our customers.</p>
     </div>
 
 </body>
