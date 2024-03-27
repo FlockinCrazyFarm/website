@@ -50,11 +50,38 @@
             color: #555;
             margin-bottom: 10px;
         }
+        
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: black;
+            font-size: 24px;
+        }
+        
+        .back-btn:hover {
+            background-color: #f0f0f0;
+        }
     </style>
 </head>
 <body>
 
-        <div class="container">
+    <a href="index.html" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path fill="black" d="M14 7l-5 5 5 5V7z"/>
+        </svg>
+    </a>
+
+    <div class="container">
         <div class="item">
             <div class="item-title">Young Quails</div>
             <div class="item-price">$3</div>
@@ -62,5 +89,8 @@
         <div class="item">
             <div class="item-title">Adult Quails</div>
             <div class="item-price">$5</div>
+        </div>
+    </div>
+
 </body>
 </html>
